@@ -8,10 +8,8 @@ public class EBDao {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ebill_db", "root", "");
-			PreparedStatement ps = con.prepareStatement("INSERT INTO bills(ConsumerNumber,name,units,TotalAmount) VALUES(?,?,?,?)");
-			ps.setString(1, bean.getConsumerName());
-			ps.setString(2, bean.getConsumerNumber());
-			ps.setInt(3, bean.getunits());
+			PreparedStatement ps = con.prepareStatement("INSERT INTO bills(units,TotalAmount) VALUES(?,?)");
+			ps.setInt(3, bean.getUnits());
 			ps.setDouble(4, bean.getTotalAmount());
 			
 			int rows = ps.executeUpdate();
